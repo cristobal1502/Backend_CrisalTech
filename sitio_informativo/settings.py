@@ -31,11 +31,7 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
     host.strip()
-<<<<<<< HEAD
-    for host in os.getenv('ALLOWED_HOSTS', '3.94.106.128,localhost,127.0.0.1').split(',')
-=======
     for host in os.getenv('ALLOWED_HOSTS', '3.94.106.128,localhost,127.0.0.1,*').split(',')
->>>>>>> 39f16a6712a5fdda68d8815c3f54e31a23c40f66
     if host.strip()
 ]
 
@@ -87,18 +83,13 @@ WSGI_APPLICATION = 'sitio_informativo.wsgi.application'
 # Base de datos: MySQL / MariaDB en una instancia en la nube.
 # Todas las credenciales vienen de variables de entorno (.env, fuera de git).
 # --------------------------------------------------------------------------
+
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-<<<<<<< HEAD
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-=======
         'NAME': os.getenv('DB_NAME', ''),
         'USER': os.getenv('DB_USER', 'root'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'admin12345'),
->>>>>>> 39f16a6712a5fdda68d8815c3f54e31a23c40f66
         'HOST': os.getenv('DB_HOST', '127.0.0.1'),
         'PORT': os.getenv('DB_PORT', '3306'),
         'OPTIONS': {
