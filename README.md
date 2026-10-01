@@ -38,9 +38,6 @@ sirve localmente: se carga desde el CDN de jsDelivr en `templates/base.html`:
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 ```
 
-> ⚠️ Si tu pauta de evaluación exige explícitamente "Bootstrap de forma
-> local", este cambio no la cumple. Verifícalo con tu profesor si aplica.
-
 ### Herencia de plantillas
 
 - `templates/base.html` → plantilla base (navbar, footer, Bootstrap CDN,
@@ -62,28 +59,6 @@ a vistas reales, no a rutas provisionales:
 Todas usan `ModelForm` (`catalogo/forms.py`, `productos/forms.py`) y muestran
 confirmaciones vía `django.contrib.messages`.
 
-## ⚠️ Archivo `.env`
-
-Tu `.env` real (con `DB_HOST`, `DB_USER`, `DB_PASSWORD` de la instancia en
-la nube) **no está incluido en este paquete** — ya lo tienes localmente y
-está correctamente en `.gitignore`. No lo sobrescribas con `.env.example`.
-
-```env
-SECRET_KEY=...
-DEBUG=True
-ALLOWED_HOSTS=3.94.106.128,localhost,127.0.0.1
-
-DB_ENGINE=django.db.backends.mysql
-DB_NAME=sitio_informativo_db
-DB_USER=tu_usuario
-DB_PASSWORD=tu_password_real
-DB_HOST=3.94.106.128
-DB_PORT=3306
-```
-
-`settings.py` ya **no** tiene valores de contraseña por defecto: si falta
-`DB_PASSWORD` en el `.env`, Django fallará claramente en vez de usar un
-valor oculto en el código.
 
 ## Instalación y ejecución
 
