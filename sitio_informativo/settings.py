@@ -24,13 +24,13 @@ load_dotenv(BASE_DIR / '.env')
 # --------------------------------------------------------------------------
 # Seguridad / entorno — leídos desde .env
 # --------------------------------------------------------------------------
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-clave-por-defecto-solo-para-desarrollo')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
     host.strip()
-    for host in os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+    for host in os.getenv('ALLOWED_HOSTS', '3.94.106.128,localhost,127.0.0.1,*').split(',')
     if host.strip()
 ]
 
@@ -91,9 +91,9 @@ WSGI_APPLICATION = 'sitio_informativo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.getenv('DB_NAME', 'sitio_informativo_db'),
+        'NAME': os.getenv('DB_NAME', ''),
         'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'admin12345'),
         'HOST': os.getenv('DB_HOST', '127.0.0.1'),
         'PORT': os.getenv('DB_PORT', '3306'),
         'OPTIONS': {
