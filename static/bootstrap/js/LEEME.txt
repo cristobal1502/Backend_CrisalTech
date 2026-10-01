@@ -1,0 +1,10 @@
+Coloca aquí el archivo:
+
+    bootstrap.bundle.min.js
+
+Descárgalo desde la sección "Compiled CSS and JS" de:
+https://getbootstrap.com/docs/5.3/getting-started/download/
+
+(Este entorno de desarrollo no tiene acceso a internet, por eso el archivo
+no viene incluido. El proyecto ya está referenciando esta ruta exacta:
+static/bootstrap/js/bootstrap.bundle.min.js)

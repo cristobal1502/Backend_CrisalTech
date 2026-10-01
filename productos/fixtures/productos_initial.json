@@ -1,0 +1,146 @@
+[
+  {
+    "model": "productos.producto",
+    "pk": 1,
+    "fields": {
+      "categoria": 1,
+      "nombre": "Audífonos inalámbricos",
+      "descripcion": "Audífonos Bluetooth con cancelación de ruido y 20 horas de batería.",
+      "precio": 29990,
+      "stock": 15,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 2,
+    "fields": {
+      "categoria": 1,
+      "nombre": "Mouse óptico",
+      "descripcion": "Mouse inalámbrico ergonómico, compatible con Windows y Mac.",
+      "precio": 9990,
+      "stock": 40,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 3,
+    "fields": {
+      "categoria": 1,
+      "nombre": "Cargador rápido USB-C",
+      "descripcion": "Cargador de pared de 30W con tecnología de carga rápida.",
+      "precio": 12990,
+      "stock": 25,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 4,
+    "fields": {
+      "categoria": 2,
+      "nombre": "Polera básica algodón",
+      "descripcion": "Polera unisex 100% algodón, disponible en varias tallas.",
+      "precio": 7990,
+      "stock": 60,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 5,
+    "fields": {
+      "categoria": 2,
+      "nombre": "Jeans clásico",
+      "descripcion": "Jeans corte recto, tela resistente y cómoda para el día a día.",
+      "precio": 19990,
+      "stock": 30,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 6,
+    "fields": {
+      "categoria": 2,
+      "nombre": "Chaqueta cortavientos",
+      "descripcion": "Chaqueta liviana, resistente al agua, ideal para primavera.",
+      "precio": 24990,
+      "stock": 18,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 7,
+    "fields": {
+      "categoria": 3,
+      "nombre": "Set de sábanas",
+      "descripcion": "Juego de sábanas de microfibra, plaza y media.",
+      "precio": 15990,
+      "stock": 20,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 8,
+    "fields": {
+      "categoria": 3,
+      "nombre": "Lámpara de escritorio LED",
+      "descripcion": "Lámpara regulable con luz cálida y fría, brazo articulado.",
+      "precio": 13990,
+      "stock": 22,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 9,
+    "fields": {
+      "categoria": 3,
+      "nombre": "Organizador multiuso",
+      "descripcion": "Caja organizadora apilable de plástico resistente.",
+      "precio": 5990,
+      "stock": 50,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 10,
+    "fields": {
+      "categoria": 4,
+      "nombre": "Balón de fútbol",
+      "descripcion": "Balón oficial N°5, ideal para uso en pasto sintético y natural.",
+      "precio": 14990,
+      "stock": 35,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 11,
+    "fields": {
+      "categoria": 4,
+      "nombre": "Set de mancuernas ajustables",
+      "descripcion": "Par de mancuernas ajustables de 2 a 10 kg cada una.",
+      "precio": 44990,
+      "stock": 10,
+      "imagen": "img/producto_generico.svg"
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 12,
+    "fields": {
+      "categoria": 4,
+      "nombre": "Botella deportiva térmica",
+      "descripcion": "Botella de acero inoxidable, mantiene la temperatura por 12 horas.",
+      "precio": 8990,
+      "stock": 45,
+      "imagen": "img/producto_generico.svg"
+    }
+  }
+]

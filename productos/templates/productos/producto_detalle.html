@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ producto.nombre }} | Catálogo de Productos{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'catalogo:index' %}">Inicio</a></li>
+            {% if categoria %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'catalogo:categoria_detalle' categoria.id %}">{{ categoria.nombre }}</a>
+                </li>
+            {% endif %}
+            <li class="breadcrumb-item active" aria-current="page">{{ producto.nombre }}</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+        <div class="col-md-5">
+            <img src="{% static producto.imagen %}" class="img-fluid rounded shadow-sm" alt="{{ producto.nombre }}">
+        </div>
+        <div class="col-md-7">
+            <h1>{{ producto.nombre }}</h1>
+            {% if categoria %}
+                <span class="badge bg-secondary mb-3">{{ categoria.nombre }}</span>
+            {% endif %}
+            <p class="lead">{{ producto.descripcion }}</p>
+            <p class="fs-3 fw-bold text-success">${{ producto.precio }}</p>
+            <p>
+                {% if producto.en_stock %}
+                    <span class="badge bg-success">Stock disponible: {{ producto.stock }} unidades</span>
+                {% else %}
+                    <span class="badge bg-danger">Sin stock</span>
+                {% endif %}
+            </p>
+
+            <!-- Controles CRUD de la ficha: Modificar / Eliminar (rutas provisionales) -->
+            <div class="btn-group mb-3" role="group" aria-label="Acciones de producto">
+                <a href="#" class="btn btn-warning">Modificar</a>
+                <a href="#" class="btn btn-danger">Eliminar</a>
+            </div>
+            <br>
+
+            {% if categoria %}
+                <a href="{% url 'catalogo:categoria_detalle' categoria.id %}" class="btn btn-outline-secondary">
+                    &larr; Volver a {{ categoria.nombre }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
