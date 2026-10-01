@@ -6,16 +6,23 @@
 {% block content %}
     <h1 class="mb-4 text-center">Categorías de Productos</h1>
 
-    <!-- Toolbar CRUD: Agregar + Buscar (rutas provisionales, sin lógica backend aún) -->
+    <!-- Toolbar CRUD: Agregar + Buscar -->
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
-        <a href="#" class="btn btn-success">+ Agregar categoría</a>
+        <a href="{% url 'catalogo:categoria_crear' %}" class="btn btn-success">+ Agregar categoría</a>
 
-        <form class="d-flex" role="search" action="#" method="get">
-            <input class="form-control me-2" type="search" name="q"
+        <form class="d-flex" role="search" action="{% url 'catalogo:index' %}" method="get">
+            <input class="form-control me-2" type="search" name="q" value="{{ query|default:'' }}"
                    placeholder="Buscar categoría..." aria-label="Buscar">
             <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            {% if query %}
+                <a href="{% url 'catalogo:index' %}" class="btn btn-outline-secondary ms-2">Limpiar</a>
+            {% endif %}
         </form>
     </div>
+
+    {% if query %}
+        <p class="text-muted">Resultados para: <strong>"{{ query }}"</strong></p>
+    {% endif %}
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
         {% for categoria in categorias %}
@@ -29,10 +36,10 @@
                             Ver productos
                         </a>
 
-                        <!-- Controles CRUD por tarjeta: Modificar / Eliminar (rutas provisionales) -->
+                        <!-- Controles CRUD por tarjeta: Modificar / Eliminar -->
                         <div class="btn-group" role="group" aria-label="Acciones de categoría">
-                            <a href="#" class="btn btn-sm btn-outline-warning">Modificar</a>
-                            <a href="#" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            <a href="{% url 'catalogo:categoria_editar' categoria.id %}" class="btn btn-sm btn-outline-warning">Modificar</a>
+                            <a href="{% url 'catalogo:categoria_eliminar' categoria.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
                         </div>
                     </div>
                 </div>

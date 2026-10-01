@@ -1,13 +1,14 @@
 """
 Configuración del proyecto 'sitio_informativo'.
 
-A partir de la Evaluación Sumativa #2, el proyecto:
+El proyecto:
   - Lee su configuración sensible (SECRET_KEY, DEBUG, credenciales de BD)
     desde variables de entorno con python-dotenv, nunca hardcodeadas.
-  - Usa MySQL/MariaDB como motor de base de datos (visible en phpMyAdmin)
-    en lugar de archivos JSON.
+  - Usa MySQL/MariaDB como motor de base de datos, alojado en una instancia
+    en la nube (visible en phpMyAdmin).
   - Los modelos (catalogo.Categoria, productos.Producto) se gestionan con
     el ORM de Django.
+  - Expone el panel de administración de Django en /admin/.
 """
 
 import os
@@ -24,22 +25,19 @@ load_dotenv(BASE_DIR / '.env')
 # --------------------------------------------------------------------------
 # Seguridad / entorno — leídos desde .env
 # --------------------------------------------------------------------------
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-clave-por-defecto-solo-para-desarrollo')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
     host.strip()
-    for host in os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+    for host in os.getenv('ALLOWED_HOSTS', '3.94.106.128,localhost,127.0.0.1').split(',')
     if host.strip()
 ]
 
 # --------------------------------------------------------------------------
 # Aplicaciones instaladas
 # --------------------------------------------------------------------------
-# Se reincorporan 'admin', 'auth', 'contenttypes', 'sessions' y 'messages'
-# porque ahora SÍ se usa base de datos (requeridas por el panel de admin,
-# las migraciones y el ORM).
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,10 +64,7 @@ ROOT_URLCONF = 'sitio_informativo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # Carpeta de plantillas compartidas (base.html) a nivel de proyecto.
         'DIRS': [BASE_DIR / 'templates'],
-        # Permite además que cada app use sus propias plantillas en
-        # <app>/templates/<app>/ (herencia de plantillas de Django).
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,15 +80,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sitio_informativo.wsgi.application'
 
 # --------------------------------------------------------------------------
-# Base de datos: MySQL / MariaDB, configurada 100% desde variables de entorno.
-# Al crear la base y correr las migraciones quedará visible en phpMyAdmin.
+# Base de datos: MySQL / MariaDB en una instancia en la nube.
+# Todas las credenciales vienen de variables de entorno (.env, fuera de git).
 # --------------------------------------------------------------------------
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.getenv('DB_NAME', 'sitio_informativo_db'),
-        'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST', '127.0.0.1'),
         'PORT': os.getenv('DB_PORT', '3306'),
         'OPTIONS': {
@@ -117,7 +112,7 @@ USE_I18N = True
 USE_TZ = True
 
 # --------------------------------------------------------------------------
-# Archivos estáticos (CSS, JS, imágenes, Bootstrap local)
+# Archivos estáticos (CSS propio e imágenes; Bootstrap se sirve vía CDN)
 # --------------------------------------------------------------------------
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']

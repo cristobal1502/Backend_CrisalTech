@@ -1,17 +1,11 @@
-# Variables de entorno (Credenciales sensibles)
-.env
-
-# Entornos virtuales
-venv/
-env/
-ENV/
-
-# Archivos compilados y cache de Python
 __pycache__/
-*.py[cod]
+*.pyc
+venv/
+entornito/
+.vscode/
+.idea/
 
-# Base de datos local SQLite (si existiera)
+# Variables de entorno: NUNCA subir el .env real con credenciales reales.
+# Sí se sube .env.example como plantilla.
+.env
 *.sqlite3
-
-# Archivos estáticos recolectados
-/staticfiles/

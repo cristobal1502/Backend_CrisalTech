@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar categoría | Catálogo de Productos{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'catalogo:index' %}">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Eliminar {{ categoria.nombre }}</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4 text-danger">Eliminar categoría</h1>
+
+    <div class="alert alert-warning col-12 col-md-8">
+        ¿Seguro que deseas eliminar la categoría <strong>{{ categoria.nombre }}</strong>?
+        {% with total=categoria.productos.count %}
+            {% if total > 0 %}
+                Esta acción también eliminará sus <strong>{{ total }}</strong> producto(s) asociado(s).
+            {% endif %}
+        {% endwith %}
+        Esta acción no se puede deshacer.
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'catalogo:index' %}" class="btn btn-outline-secondary">Cancelar</a>
+    </form>
+{% endblock %}

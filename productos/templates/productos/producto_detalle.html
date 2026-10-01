@@ -35,10 +35,10 @@
                 {% endif %}
             </p>
 
-            <!-- Controles CRUD de la ficha: Modificar / Eliminar (rutas provisionales) -->
+            <!-- Controles CRUD de la ficha: Modificar / Eliminar -->
             <div class="btn-group mb-3" role="group" aria-label="Acciones de producto">
-                <a href="#" class="btn btn-warning">Modificar</a>
-                <a href="#" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'productos:producto_editar' producto.id %}" class="btn btn-warning">Modificar</a>
+                <a href="{% url 'productos:producto_eliminar' producto.id %}" class="btn btn-danger">Eliminar</a>
             </div>
             <br>
 

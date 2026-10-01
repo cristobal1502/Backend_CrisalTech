@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar producto | Catálogo de Productos{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'catalogo:index' %}">Inicio</a></li>
+            {% if producto.categoria %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'catalogo:categoria_detalle' producto.categoria.id %}">{{ producto.categoria.nombre }}</a>
+                </li>
+            {% endif %}
+            <li class="breadcrumb-item active" aria-current="page">Eliminar {{ producto.nombre }}</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4 text-danger">Eliminar producto</h1>
+
+    <div class="alert alert-warning col-12 col-md-8">
+        ¿Seguro que deseas eliminar el producto <strong>{{ producto.nombre }}</strong>?
+        Esta acción no se puede deshacer.
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'productos:producto_detalle' producto.id %}" class="btn btn-outline-secondary">Cancelar</a>
+    </form>
+{% endblock %}
